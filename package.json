@@ -1,0 +1,20 @@
+{
+  "name": "nba-logos",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "watch": "npx tsc --watch",
+    "clean": "rm -rf dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "jimp": "^0.16.2"
+  }
+}
