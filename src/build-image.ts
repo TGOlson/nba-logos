@@ -27,8 +27,8 @@ export async function buildImage(): Promise<void> {
 
   const teamImagesById: {[key: string]: Jimp} = teamImages.reduce((acc, x) => ({...acc, [x.id]: x.image}), {})
 
-  const numberElementsX = franchises.length;
-  const numberElementsY = franchises.reduce((x, fr) => fr.teams.length > x ? fr.teams.length : x, 0);
+  const numberElementsX = sortedFranchises.length;
+  const numberElementsY = sortedFranchises.reduce((x, fr) => fr.teams.length > x ? fr.teams.length : x, 0);
 
   const width = (numberElementsX + 1) * (IMG_WIDTH + PADDING) + PADDING;
   const height = numberElementsY * (IMG_HEIGHT + PADDING) + PADDING;
@@ -88,6 +88,14 @@ export async function buildImage(): Promise<void> {
     mapping[franchise.id] = franchiseMapping;
   });
 
+
+  // original, high quality
   image.write(path.resolve(__dirname, '../assets/logos.png'));
+
+  // lower quality jpg
+  image
+    .quality(50)
+    .write(path.resolve(__dirname, '../assets/logos_compressed.jpg'));
+
   writeFile(path.resolve(__dirname, '../assets/logos.mapping.json'), JSON.stringify(mapping));
 }
