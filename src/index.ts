@@ -1,5 +1,6 @@
-import { buildImage } from './build-image';
+import { buildCombinedImage } from './combined-image';
 import { convertRawData } from './convert-raw-data';
+import { buildTeamImages } from './team-image';
 
 async function main () {
   const [_, __, cmd] = process.argv;
@@ -7,8 +8,10 @@ async function main () {
   switch (cmd) {
     case '--convert-raw-data':
       return await convertRawData();
-    case '--build-image':
-      return await buildImage();
+    case '--build-combined-image':
+      return await buildCombinedImage();
+    case '--build-team-images':
+      return await buildTeamImages();
     default:
       console.log('Unexpected command:', cmd);
       break;

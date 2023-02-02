@@ -15,6 +15,7 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "jimp": "^0.16.2"
+    "jimp": "^0.16.2",
+    "quick-sprite": "^0.0.5"
   }
 }

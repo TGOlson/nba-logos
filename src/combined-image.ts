@@ -8,7 +8,7 @@ const IMG_WIDTH = 125;
 const IMG_HEIGHT = 125;
 const PADDING = 5;
 
-export async function buildImage(): Promise<void> {
+export async function buildCombinedImage(): Promise<void> {
   const franchises: Franchise[] = await readJSON(FRANCHISE_PATH);
   const sortedFranchises = franchises.filter(x => x.active).sort((a, b) => a.name.localeCompare(b.name));
 
@@ -97,5 +97,5 @@ export async function buildImage(): Promise<void> {
     .quality(50)
     .write(path.resolve(__dirname, '../assets/logos_compressed.jpg'));
 
-  writeFile(path.resolve(__dirname, '../assets/logos.mapping.json'), JSON.stringify(mapping));
+  await writeFile(path.resolve(__dirname, '../assets/logos.mapping.json'), JSON.stringify(mapping));
 }
