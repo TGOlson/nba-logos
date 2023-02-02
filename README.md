@@ -25,5 +25,5 @@ npm run watch
 Run commands
 
 ```
-node ./dist/index.js {--convert-raw-data,--build-image}
+node ./dist/index.js {--convert-raw-data,--build-combined-image,-build-team-images}
 ```
