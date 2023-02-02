@@ -26,9 +26,15 @@ export async function convertRawData(): Promise<void> {
   const rawTeams: RawTeam[] = await readJSON(RAW_TEAM_PATH);
 
   const teamsByFranchiseId: {[key: string]: Team[]} = rawTeams.reduce((acc: {[key: string]: Team[]}, rawTeam) => {
+    const league = rawTeam.seasonId.split('_')[0];
+
+    if (!league) throw new Error(`Unexpected unable to parse league for team: ${rawTeam.id}`);
+
     const team = {
       id: rawTeam.id,
+      name: rawTeam.name,
       year: rawTeam.year,
+      league,
     };
 
     const prevTeams: Team[] = acc[rawTeam.franchiseId] || [];

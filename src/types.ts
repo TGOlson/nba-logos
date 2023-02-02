@@ -1,6 +1,8 @@
 export type Team = {
   id: string,
   year: number,
+  name: string,
+  league: string,
 }
 
 export type Franchise = {
